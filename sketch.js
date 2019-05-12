@@ -103,6 +103,7 @@ function draw() {
 
 function keyPressed() {
   setMove(true);
+  return false;
 }
 
 function keyReleased() {
