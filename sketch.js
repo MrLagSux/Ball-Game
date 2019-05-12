@@ -41,7 +41,7 @@ function resetFile() {
 }
 
 function preload() {
-  loadFile();
+  if (localStorage.getItem("CurrCoins") != null) loadFile();
 }
 
 function setup() {
