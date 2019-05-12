@@ -221,6 +221,7 @@ function prettify(value, digits) {
     let l = log(value) / log(10);
     let rl = floor(l);
     let d = pow(10, digits);
+    if (value == 0) return 0;
     return round(pow(10, l - rl) * d) / d + "e" + rl;
   }
   return round(value * 10) / 10;
