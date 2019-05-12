@@ -15,7 +15,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(600, 700);
+  createCanvas(windowWidth, windowHeight);
   spieler = new player(width / 2, height / 2);
 
   createButtons();
