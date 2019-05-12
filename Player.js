@@ -2,7 +2,7 @@ class player {
   constructor(x_, y_) {
     this.pos = createVector(x_, y_);
     this.vel = createVector(0, 0);
-    this.acc = p5.Vector.random2D();
+    this.acc = createVector(0, 0);
     this.h = 50;
   }
 
@@ -16,15 +16,18 @@ class player {
     let recordD = width * height;
     let index;
 
-    for (let i = coins.length - 1; i > 0; i--) {
-      let d = dist(this.pos.x, this.pos.y, coins[i].pos.x, coins[i].pos.y);
-      if (d < recordD) {
-        recordD = d;
-        index = i;
+    if (selfMoving) {
+      for (let i = coins.length - 1; i > 0; i--) {
+        let d = dist(this.pos.x, this.pos.y, coins[i].pos.x, coins[i].pos.y);
+        if (d < recordD) {
+          recordD = d;
+          index = i;
+        }
       }
+
+
+      this.acc = p5.Vector.sub(coins[index].pos, this.pos);
     }
-    
-    this.acc = p5.Vector.sub(coins[index].pos, this.pos);
     this.vel.add(this.acc);
     this.vel.limit(spd);
     this.pos.add(this.vel);

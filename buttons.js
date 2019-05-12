@@ -24,28 +24,28 @@ function createButtons() {
 }
 
 function buttonTexts() {
-  if (MoreObjectsPrice <= currentCoins) butt[0].text('+1 Objekt, jetzt kaufen!');
-  else butt[0].text('Anzahl: ' + MoreObjectsLevel + '; Kosten: ' + prettify(MoreObjectsPrice));
-  if (minSpeed >= maxMinSpeed) butt[1].text('Max Speed erreicht: ' + minSpeed);
-  else if (minSpeed >= maxSpeed) butt[1].text('Erst maxSpeed kaufen!');
-  else if (minSpeedPrice <= currentCoins) butt[1].text('+1 minSpeed, jetzt kaufen!');
-  else butt[1].text('MinSpeed: ' + minSpeed + '; Kosten: ' + prettify(minSpeedPrice));
-  if (maxSpeed >= maxMaxSpeed) butt[2].text('Max Speed erreicht: ' + maxSpeed);
-  else if (maxSpeedPrice <= currentCoins) butt[2].text('+1 maxSpeed, jetzt kaufen!');
-  else butt[2].text('MaxSpeed: ' + maxSpeed + '; Kosten: ' + prettify(maxSpeedPrice));
-  if (spd >= maxSpd) butt[3].text('Max Player Speed erreicht: ' + spd);
-  else if (speedPrice <= currentCoins) butt[3].text('+1 Player Speed, jetzt kaufen!');
-  else butt[3].text('Speed: ' + spd + '; Kosten: ' + prettify(speedPrice));
-  if (cc >= maxCc) butt[4].text('Max Crit Chance erreicht: ' + cc + "%");
-  else if (CcPrice <= currentCoins) butt[4].text('+1% Crit Chance, jetzt kaufen!');
-  else butt[4].text('Crit%: ' + cc + '; Kosten: ' + prettify(CcPrice));
-  if (cd >= maxCd) butt[5].text('Max Crit Multi erreicht: x' + cd);
-  else if (CdPrice <= currentCoins) butt[5].text('+2x Crit Damage, jetzt kaufen!');
-  else butt[5].text('Crit Multi: ' + cd + '; Kosten: ' + prettify(CdPrice));
+  if (MoreObjectsPrice <= currentCoins) butt[0].text('+1 Falling Coin, buy now!');
+  else butt[0].text('Amount: ' + MoreObjectsLevel + '; Cost: ' + prettify(MoreObjectsPrice));
+  if (minSpeed >= maxMinSpeed) butt[1].text('Max Speed reached: ' + minSpeed);
+  else if (minSpeed >= maxSpeed) butt[1].text('Buy maxSpeed first!');
+  else if (minSpeedPrice <= currentCoins) butt[1].text('+1 minSpeed, buy now!');
+  else butt[1].text('MinSpeed: ' + minSpeed + '; Cost: ' + prettify(minSpeedPrice));
+  if (maxSpeed >= maxMaxSpeed) butt[2].text('Max Speed reached: ' + maxSpeed);
+  else if (maxSpeedPrice <= currentCoins) butt[2].text('+1 maxSpeed, buy now!');
+  else butt[2].text('MaxSpeed: ' + maxSpeed + '; Cost: ' + prettify(maxSpeedPrice));
+  if (spd >= maxSpd) butt[3].text('Max Player Speed reached: ' + spd);
+  else if (speedPrice <= currentCoins) butt[3].text('+1 Player Speed, buy now!');
+  else butt[3].text('Speed: ' + spd + '; Cost: ' + prettify(speedPrice));
+  if (cc >= maxCc) butt[4].text('Max Crit Chance reached: ' + cc + "%");
+  else if (CcPrice <= currentCoins) butt[4].text('+1% Crit Chance, buy now!');
+  else butt[4].text('Crit%: ' + cc + '; Cost: ' + prettify(CcPrice));
+  if (cd >= maxCd) butt[5].text('Max Crit Multi reached: x' + cd);
+  else if (CdPrice <= currentCoins) butt[5].text('+2x Crit Damage, buy now!');
+  else butt[5].text('Crit Multi: ' + cd + '; Cost: ' + prettify(CdPrice));
 
-  butt[100].text('Spielstand speichern');
-  butt[101].text('Spielstand laden');
-  butt[102].text('Spielstand zurücksetzen');
+  butt[100].text('Save File');
+  butt[101].text('Load File');
+  butt[102].text('Reset Save File');
 }
 
 function moreCoins() {

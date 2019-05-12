@@ -2,6 +2,13 @@
 let currentCoins = 0;
 let totalDest = 0;
 
+//Upgrade "Coin Value"
+let BaseValuePrice = 250;
+let ValueLevel = 0;
+let ValuePriceMulti = 2.01;
+let ValuePrice;
+let value;
+
 //Upgrade "More Coins"
 let MoreObjectsBasePrice = 10;
 let MoreObjectsLevel = 0;
@@ -37,7 +44,7 @@ let cc = 0;
 let maxCc = 50;
 let CcBasePrice = 75;
 let CcLevel = 0;
-let CcPriceMulti = 1.35;
+let CcPriceMulti = 1.31;
 let CcPrice;
 
 //Upgrade "Crit Damage"
@@ -45,14 +52,16 @@ let cd = 0;
 let maxCd = 100;
 let CdBasePrice = 100;
 let CdLevel = 0;
-let CdPriceMulti = 1.4;
+let CdPriceMulti = 1.32;
 let CdPrice;
 
-let wert = 1;
 
 let isLeft, isRight, isDown, isUp;
+let selfMoving = false;
 
 let coins = [];
 let butt = [];
 
 let boxSize = 150;
+let LongNum = false;
+let ScientNum = true;

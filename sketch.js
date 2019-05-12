@@ -32,6 +32,7 @@ function draw() {
   spieler.edges();
   spieler.show();
 
+  strokeWeight(0.1);
   stroke(255);
   line(0, height - boxSize, width, height - boxSize);
 
@@ -48,26 +49,22 @@ function draw() {
     if (hit) {
       destroyCoin(i);
       if (random(100) < cc) {
-        totalDest += cd * wert;
-        currentCoins += cd * wert;
+        totalDest += cd * value;
+        currentCoins += cd * value;
       } else {
-        totalDest += wert;
-        currentCoins += wert;
+        totalDest += value;
+        currentCoins += value;
       }
     }
   }
 
   calcUpCosts();
 
-  textSize(24);
+  textSize(22);
   textAlign(LEFT, CENTER);
-  text("Münzen gesammelt: " + prettify(totalDest), 0, height - boxSize + 12);
+  text("Total Coins: " + prettify(totalDest), 0, height - boxSize + 12);
   textAlign(RIGHT, CENTER);
-  text("Münzen aktuell: " + prettify(currentCoins), width, height - boxSize + 12);
-}
-
-function prettify(value) {
-  return round(value * 10) / 10;
+  text("Current Coins: " + prettify(currentCoins), width, height - boxSize + 12);
 }
 
 function keyPressed() {
@@ -157,4 +154,18 @@ function calcUpCosts() {
   minSpeedPrice = minSpeedBasePrice * pow(minSpeedPriceMulti, minSpeedLevel);
   maxSpeedPrice = maxSpeedBasePrice * pow(maxSpeedPriceMulti, maxSpeedLevel);
   MoreObjectsPrice = MoreObjectsBasePrice * pow(MoreObjectsPriceMulti, MoreObjectsLevel);
+  ValuePrice = BaseValuePrice * pow(ValuePriceMulti, ValueLevel);
+  value = pow(2, ValueLevel);
+}
+
+function ToScient(value) {}
+
+
+function prettify(value) {
+  if (ScientNum) {
+    let l = log(value) / log(10);
+    let rl = floor(l);
+    return round(pow(10, l - rl) * 1000) / 1000 + "e" + rl;
+  }
+  return round(value * 10) / 10;
 }
