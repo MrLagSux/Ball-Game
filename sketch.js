@@ -99,6 +99,9 @@ function draw() {
   text("Total Coins: " + prettify(totalDest), 0, height - boxSize + 12);
   textAlign(RIGHT, CENTER);
   text("Current Coins: " + prettify(currentCoins), width, height - boxSize + 12);
+  
+  //60 FPS times 60 seconds per minute * 5 minutes
+  if (frameCount % (60 * 60 * 5) == 0) saveFile();
 }
 
 function keyPressed() {
