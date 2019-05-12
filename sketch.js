@@ -1,13 +1,43 @@
 function loadFile() {
+  let currCoin = localStorage.getItem("CurrCoins");
+  currentCoins = parseFloat(currCoin);
+  let totalD = localStorage.getItem("totalDes");
+  totalDest = parseFloat(totalD);
+  let coinL = localStorage.getItem("CoinLevel");
+  MoreObjectsLevel = parseInt(coinL);
+  let misL = localStorage.getItem("minSpeedLevel");
+  minSpeedLevel = parseInt(misL);
+  let masL = localStorage.getItem("maxSpeedLevel");
+  maxSpeedLevel = parseInt(masL);
+  let ps = localStorage.getItem("PlayerSpeed");
+  speedLevel = parseInt(ps);
+  let crc = localStorage.getItem("CritChance");
+  CcLevel = parseInt(crc);
+  let crd = localStorage.getItem("CritDmg");
+  CdLevel = parseInt(crd);
 
 }
 
 function saveFile() {
-
+  localStorage.setItem("CurrCoins", currentCoins);
+  localStorage.setItem("totalDes", totalDest);
+  localStorage.setItem("CoinLevel", MoreObjectsLevel);
+  localStorage.setItem("minSpeedLevel", minSpeedLevel);
+  localStorage.setItem("maxSpeedLevel", maxSpeedLevel);
+  localStorage.setItem("PlayerSpeed", speedLevel);
+  localStorage.setItem("CritChance", CcLevel);
+  localStorage.setItem("CritDmg", CdLevel);
 }
 
 function resetFile() {
-
+  speedLevel = 0;
+  CcLevel = 0;
+  CdLevel = 0;
+  minSpeedLevel = 0;
+  maxSpeedLevel = 0;
+  MoreObjectsLevel = 0;
+  currentCoins = 0;
+  totalDest = 0;
 }
 
 function preload() {
@@ -21,6 +51,9 @@ function setup() {
   createButtons();
 
   makeCoins();
+
+  calcUpCosts();
+  calcUpBenefit();
 }
 
 function draw() {
