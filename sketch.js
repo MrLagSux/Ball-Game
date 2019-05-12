@@ -1,4 +1,5 @@
 function loadFile() {
+  if (localStorage.getItem("CurrCoins") == null) return;
   let currCoin = localStorage.getItem("CurrCoins");
   currentCoins = parseFloat(currCoin);
   let totalD = localStorage.getItem("totalDes");
@@ -41,7 +42,7 @@ function resetFile() {
 }
 
 function preload() {
-  if (localStorage.getItem("CurrCoins") != null) loadFile();
+  loadFile();
 }
 
 function setup() {
