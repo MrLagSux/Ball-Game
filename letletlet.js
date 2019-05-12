@@ -57,7 +57,7 @@ let CdPrice;
 
 
 let isLeft, isRight, isDown, isUp;
-let selfMoving = true;
+let selfMoving = false;
 
 let coins = [];
 let butt = [];
