@@ -1,5 +1,4 @@
 function loadFile() {
-  if (localStorage.getItem("CurrCoins") == null) return;
   let currCoin = localStorage.getItem("CurrCoins");
   currentCoins = parseFloat(currCoin);
   let totalD = localStorage.getItem("totalDes");
@@ -16,6 +15,12 @@ function loadFile() {
   CcLevel = parseInt(crc);
   let crd = localStorage.getItem("CritDmg");
   CdLevel = parseInt(crd);
+  let val = localStorage.getItem("Val");
+  ValueLevel = parseInt(val);
+  let selfm = localStorage.getItem("SelfMv");
+  SelfMovingLevel = parseInt(selfm);
+  let fasmv = localStorage.getItem("FasterMv");
+  FasterMovingLevel = parseInt(fasmv);
 
 }
 
@@ -28,6 +33,10 @@ function saveFile() {
   localStorage.setItem("PlayerSpeed", speedLevel);
   localStorage.setItem("CritChance", CcLevel);
   localStorage.setItem("CritDmg", CdLevel);
+  localStorage.setItem("Val", ValueLevel);
+  localStorage.setItem("SelfMv", SelfMovingLevel);
+  localStorage.setItem("FasterMv", FasterMovingLevel);
+  console.log("Successfully saved!");
 }
 
 function resetFile() {
@@ -37,12 +46,16 @@ function resetFile() {
   minSpeedLevel = 0;
   maxSpeedLevel = 0;
   MoreObjectsLevel = 0;
+  ValueLevel = 0;
+  SelfMovingLevel = 0;
+  FasterMovingLevel = 0;
   currentCoins = 0;
   totalDest = 0;
 }
 
 function preload() {
-  loadFile();
+  if (localStorage.getItem("CurrCoins") != null) loadFile();
+  if (SelfMovingLevel == 1) selfMoving = true;
 }
 
 function setup() {
@@ -70,7 +83,6 @@ function draw() {
   stroke(255);
   line(0, height - boxSize, width, height - boxSize);
 
-
   calcUpBenefit();
 
   for (let i = coins.length - 1; i >= 0; i--) {
@@ -96,10 +108,10 @@ function draw() {
 
   textSize(22);
   textAlign(LEFT, CENTER);
-  text("Total Coins: " + prettify(totalDest), 0, height - boxSize + 12);
+  text("Total Coins: " + prettify(totalDest, 3), 0, height - boxSize + 12);
   textAlign(RIGHT, CENTER);
-  text("Current Coins: " + prettify(currentCoins), width, height - boxSize + 12);
-  
+  text("Current Coins: " + prettify(currentCoins, 3), width, height - boxSize + 12);
+
   //60 FPS times 60 seconds per minute * 5 minutes
   if (frameCount % (60 * 60 * 5) == 0) saveFile();
 }
@@ -109,10 +121,10 @@ function keyPressed() {
 }
 
 window.addEventListener("keydown", function(e) {
-    // space and arrow keys
-    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-        e.preventDefault();
-    }
+  // space and arrow keys
+  if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+    e.preventDefault();
+  }
 }, false);
 
 function keyReleased() {
@@ -189,6 +201,8 @@ function calcUpBenefit() {
   spd = 5 + speedLevel;
   minSpeed = 2 + minSpeedLevel;
   maxSpeed = 5 + maxSpeedLevel;
+  value = pow(1.1, ValueLevel);
+  movSpeed = 5 * (FasterMovingLevel + 1) / 100;
 }
 
 function calcUpCosts() {
@@ -199,17 +213,15 @@ function calcUpCosts() {
   maxSpeedPrice = maxSpeedBasePrice * pow(maxSpeedPriceMulti, maxSpeedLevel);
   MoreObjectsPrice = MoreObjectsBasePrice * pow(MoreObjectsPriceMulti, MoreObjectsLevel);
   ValuePrice = BaseValuePrice * pow(ValuePriceMulti, ValueLevel);
-  value = pow(2, ValueLevel);
+  FasterMovingPrice = FasterMovingBasePrice * pow(FasterMovingPriceMulti, FasterMovingLevel);
 }
 
-function ToScient(value) {}
-
-
-function prettify(value) {
+function prettify(value, digits) {
   if (ScientNum) {
     let l = log(value) / log(10);
     let rl = floor(l);
-    return round(pow(10, l - rl) * 1000) / 1000 + "e" + rl;
+    let d = pow(10, digits);
+    return round(pow(10, l - rl) * d) / d + "e" + rl;
   }
   return round(value * 10) / 10;
 }

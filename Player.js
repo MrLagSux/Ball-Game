@@ -15,7 +15,7 @@ class player {
 
     let recordD = width * height;
     let index;
-
+    
     if (selfMoving) {
       for (let i = coins.length - 1; i > 0; i--) {
         let d = dist(this.pos.x, this.pos.y, coins[i].pos.x, coins[i].pos.y);
@@ -24,11 +24,10 @@ class player {
           index = i;
         }
       }
-
-
       this.acc = p5.Vector.sub(coins[index].pos, this.pos);
     }
     this.vel.add(this.acc);
+    if (selfMoving) this.vel.mult(movSpeed);
     this.vel.limit(spd);
     this.pos.add(this.vel);
   }

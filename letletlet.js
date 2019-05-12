@@ -3,11 +3,11 @@ let currentCoins = 0;
 let totalDest = 0;
 
 //Upgrade "Coin Value"
-let BaseValuePrice = 250;
+let BaseValuePrice = 100;
 let ValueLevel = 0;
-let ValuePriceMulti = 2.01;
+let ValuePriceMulti = 1.2;
 let ValuePrice;
-let value;
+let value = 1;
 
 //Upgrade "More Coins"
 let MoreObjectsBasePrice = 10;
@@ -55,9 +55,20 @@ let CdLevel = 0;
 let CdPriceMulti = 1.32;
 let CdPrice;
 
+//Upgrade "SelfMoving"
+let selfMoving = false;
+let SelfMovingPrice = 5000;
+let SelfMovingLevel = 0;
+
+//Upgrade "Faster Moving"
+let movSpeed;
+let FasterMovingBasePrice = 1000;
+let MaxFasterMovingLevel = 80;
+let FasterMovingLevel = 0;
+let FasterMovingPriceMulti = 1.1;
+let FasterMovingPrice;
 
 let isLeft, isRight, isDown, isUp;
-let selfMoving = false;
 
 let coins = [];
 let butt = [];
