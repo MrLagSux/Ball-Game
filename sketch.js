@@ -1,58 +1,3 @@
-function loadFile() {
-  let currCoin = localStorage.getItem("CurrCoins");
-  currentCoins = parseFloat(currCoin);
-  let totalD = localStorage.getItem("totalDes");
-  totalDest = parseFloat(totalD);
-  let coinL = localStorage.getItem("CoinLevel");
-  MoreObjectsLevel = parseInt(coinL);
-  let misL = localStorage.getItem("minSpeedLevel");
-  minSpeedLevel = parseInt(misL);
-  let masL = localStorage.getItem("maxSpeedLevel");
-  maxSpeedLevel = parseInt(masL);
-  let ps = localStorage.getItem("PlayerSpeed");
-  speedLevel = parseInt(ps);
-  let crc = localStorage.getItem("CritChance");
-  CcLevel = parseInt(crc);
-  let crd = localStorage.getItem("CritDmg");
-  CdLevel = parseInt(crd);
-  let val = localStorage.getItem("Val");
-  ValueLevel = parseInt(val);
-  let selfm = localStorage.getItem("SelfMv");
-  SelfMovingLevel = parseInt(selfm);
-  let fasmv = localStorage.getItem("FasterMv");
-  FasterMovingLevel = parseInt(fasmv);
-
-}
-
-function saveFile() {
-  localStorage.setItem("CurrCoins", currentCoins);
-  localStorage.setItem("totalDes", totalDest);
-  localStorage.setItem("CoinLevel", MoreObjectsLevel);
-  localStorage.setItem("minSpeedLevel", minSpeedLevel);
-  localStorage.setItem("maxSpeedLevel", maxSpeedLevel);
-  localStorage.setItem("PlayerSpeed", speedLevel);
-  localStorage.setItem("CritChance", CcLevel);
-  localStorage.setItem("CritDmg", CdLevel);
-  localStorage.setItem("Val", ValueLevel);
-  localStorage.setItem("SelfMv", SelfMovingLevel);
-  localStorage.setItem("FasterMv", FasterMovingLevel);
-  console.log("Successfully saved!");
-}
-
-function resetFile() {
-  speedLevel = 0;
-  CcLevel = 0;
-  CdLevel = 0;
-  minSpeedLevel = 0;
-  maxSpeedLevel = 0;
-  MoreObjectsLevel = 0;
-  ValueLevel = 0;
-  SelfMovingLevel = 0;
-  FasterMovingLevel = 0;
-  currentCoins = 0;
-  totalDest = 0;
-}
-
 function preload() {
   if (localStorage.getItem("CurrCoins") != null) loadFile();
   if (SelfMovingLevel == 1) selfMoving = true;
@@ -217,11 +162,11 @@ function calcUpCosts() {
 }
 
 function prettify(value, digits) {
+  if (value < 999) return round(value * 10) / 10;
   if (ScientNum) {
     let l = log(value) / log(10);
     let rl = floor(l);
     let d = pow(10, digits);
-    if (value < 10) return value;
     return round(pow(10, l - rl) * d) / d + "e" + rl;
   }
   return round(value * 10) / 10;

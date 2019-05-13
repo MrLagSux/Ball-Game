@@ -73,9 +73,9 @@ function buttonTexts() {
   else butt[8].text('Auto Spd: ' + movSpeed*100 + '%; Cost: ' + prettify(FasterMovingPrice, 1));
   
   
-  butt[100].text('Save File');
-  butt[101].text('Load File');
-  butt[102].text('Reset Save File');
+  butt[100].text('Save Game');
+  butt[101].text('Load Game');
+  butt[102].text('Reset Game');
 }
 
 function moreCoins() {
