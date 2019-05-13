@@ -27,8 +27,8 @@ class player {
       this.acc = p5.Vector.sub(coins[index].pos, this.pos);
     }
     this.vel.add(this.acc);
-    if (selfMoving) this.vel.mult(movSpeed);
     this.vel.limit(spd);
+    if (selfMoving) this.vel.mult(movSpeed);
     this.pos.add(this.vel);
   }
 
