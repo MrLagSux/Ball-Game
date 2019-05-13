@@ -48,7 +48,7 @@ function buttonTexts() {
   else butt[3].text('Speed: ' + spd + '; Cost: ' + prettify(speedPrice, 3));
 
   //Crit Chance
-  if (cc >= maxCc) butt[4].text('Max Crit Chance reached: ' + cc + "%");
+  if (cc >= maxCc) butt[4].text('Max Crit% reached: ' + cc + "%");
   else if (CcPrice <= currentCoins) butt[4].text('+1% Crit Chance, buy now!');
   else butt[4].text('Crit%: ' + cc + '; Cost: ' + prettify(CcPrice, 3));
 
