@@ -63,7 +63,7 @@ let SelfMovingLevel = 0;
 //Upgrade "Faster Moving"
 let movSpeed;
 let FasterMovingBasePrice = 1000;
-let MaxFasterMovingLevel = 80;
+let MaxFasterMovingLevel = 20;
 let FasterMovingLevel = 0;
 let FasterMovingPriceMulti = 1.1;
 let FasterMovingPrice;
