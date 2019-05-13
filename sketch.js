@@ -141,12 +141,18 @@ function destroyCoin(i) {
 }
 
 function calcUpBenefit() {
+  if (CcLevel > maxCc) CcLevel = maxCc;
   cc = CcLevel;
+  if (CdLevel > maxCd) CdLevel = maxCd;
   cd = 1 + CdLevel;
+  if (speedLevel > maxSpd) speedLevel = maxSpd;
   spd = 5 + speedLevel;
+  if (minSpeedLevel > maxMinSpeed) minSpeedLevel = maxMinSpeed;
   minSpeed = 2 + minSpeedLevel;
+  if (maxSpeedLevel > maxMaxSpeed) maxSpeedLevel = maxMaxSpeed;
   maxSpeed = 5 + maxSpeedLevel;
   value = pow(1.1, ValueLevel);
+  if (FasterMovingLevel > MaxFasterMovingLevel) FasterMovingLevel = MaxFasterMovingLevel;
   movSpeed = 5 * (FasterMovingLevel + 1) / 100;
 }
 
