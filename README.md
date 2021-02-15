@@ -1,4 +1,4 @@
-# MrLagSux.github.io
+# Ball Game
 My little Incremental Game
 
 EPILEPSY WARNING! FAST MOVING SHAPES!
